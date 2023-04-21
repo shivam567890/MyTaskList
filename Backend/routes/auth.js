@@ -1,4 +1,4 @@
-const  express =require('express')
+const  express =require('express');
 const router= express.Router();
 const { body, validationResult } = require('express-validator');
 const User =require('../models/User');
@@ -80,8 +80,8 @@ catch(error){
 // Routes 3: Get loggedin User Details using: POST "/api/auth/getuser".  Login required
 router.post('/getuser',fetchuser,async(req,res)=>{
  try{
-  userId=req.user.id;
-  const user=await User.findById(userId).select("-password");
+ var userId=req.user.id;
+  const user=await User.findById(userId).select("-password").select("-email");
   console.log(user);
   res.send(user);
  }

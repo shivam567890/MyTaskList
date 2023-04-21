@@ -1,7 +1,9 @@
 import React, { useState,useContext} from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link} from "react-router-dom";
 import alertContext from '../context/alerts/AlertContext';
+import "../Css/Login.css";
 export const Login = () => {
+
   const { showAlert } = useContext(alertContext);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const Navigate = useNavigate();
@@ -25,25 +27,37 @@ export const Login = () => {
       showAlert({ type: "danger", msg: "Invalid Credentials" });
     }
   }
-
+ 
+    
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   }
+  const st= {
+  
+    width: "285px",  }
+
   return (
-    <div className='container my-3 mt-3'>
-      <h3>Login to continue to iNotebook</h3>
+    <div >
+      <div className='d-flex flex-column justify-content-center align-items-center my-5 py-5 ' style={{width:'40%',margin:'auto', boxShadow: 'rgb(182 182 182) 1px 2px 9px',}}>
+      <h3>MyTaskList</h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-3 mt-5">
           <label htmlFor="email" className="form-label h5" >Email Address</label>
           <input type="email" className="form-control" onChange={onChange} id="email" name="email" aria-describedby="emailHelp" />
           <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
         </div>
-        <div className="mb-3 mt-3">
+        <div className="mb-3 mt-3 ">
           <label htmlFor="password" className="form-label h5">Password</label>
           <input type="password" className="form-control" onChange={onChange} id="password" name="password" />
         </div>
-        <button type="submit" className="btn btn-primary" >Submit</button>
+        <button type="submit" className="btn btn-primary mt-4" style={st} >Login</button>
       </form>
+      </div>
+      <div className='d-flex flex-column justify-content-center align-items-center my-2 py-2 ' style={{width:'40%',margin:'auto', boxShadow: 'rgb(182 182 182) 1px 2px 9px'}}>
+        <p className='p-2' style={{margin:"auto"}}>Don't have an account?  <Link to='/signup'>Signup</Link></p>
+      </div>
     </div>
+
+  
   )
 }
