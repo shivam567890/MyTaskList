@@ -1,0 +1,9 @@
+body{
+background: rgb(45 146 159);
+}
+
+  .dark-mode{
+    background: rgb(26,31,35);
+    color: aliceblue;
+  }
+  

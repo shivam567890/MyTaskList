@@ -4,13 +4,16 @@ import alertContext from '../context/alerts/AlertContext';
 import noteContext from '../context/notes/NoteContext';
 import AddNote from './AddNote';
 import Noteitem from './Noteitem';
+import IMG from '../image/No_Data-removebg-preview.png';
 const Notes = () => {
   const Navigate= useNavigate();
   const [note, setNote] = useState({ id: "", title: "", description: "", tag: "" });
   const context = useContext(noteContext);
   const { showAlert } = useContext(alertContext);
   const { notes, getNotes,editNote } = context;
+  // eslint-disable-next-line
   useEffect(() => {
+    // eslint-disable-next-line
     if(localStorage.getItem('token')){
     getNotes();}
     else{
@@ -77,9 +80,12 @@ const Notes = () => {
         </div>
       </div>
       <div className="row my-3 ">
-        <h1>Your Notes</h1>
+        <h1 className='text-white'>Your Notes</h1>
         <div className="container mx-1">
-          {notes.length===0 && 'No notes to display'}
+          {notes.length===0 && 'No notes to display' }
+          {notes.length===0  && <div className='d-flex justify-content-center align-items-center' >
+            < img src={IMG} alt="No Data" width="400px"/>
+          </div> }
         </div>
         {notes.map((note, i) => {
           return <Noteitem key={i} updateNote={updateNote} note={note} />;

@@ -7,18 +7,12 @@
     overflow-x: hidden;
     padding-top: 20px;
   }
-
-
   .left {
-    left: 0;
-  
+    left: 0;  
   }
-  
   .right {
     right: 0;
-
   }
-
   .center {
     position: absolute;
     top: 50%;
@@ -26,4 +20,3 @@
     transform: translate(-50%, -50%);
     text-align: center;
   }
-  

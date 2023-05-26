@@ -4,6 +4,8 @@ import { About } from './Component/About';
 import { Home } from './Component/Home';
 import { Login } from './Component/Login';
 import { Signup } from './Component/Signup';
+import React, { useState } from 'react'
+import LoadingBar from 'react-top-loading-bar'
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,8 +14,10 @@ import {
 import NoteState from './context/notes/NoteState';
 import Alert from './Component/Alert';
 import AlertState from './context/alerts/AlertState';
-
+import {UserProvider} from './context/userdetails/UserContext';
 function App() {
+const [progress, setProgress] = useState(100)
+
   const st={
     display: 'flex',
     flexDirection : 'column',
@@ -22,10 +26,17 @@ function App() {
     margin:' 30px'
   }
   return (
-    <>
+    <div className="my-bg " >
       <NoteState>
         <AlertState>
+         <UserProvider>
           <Router>
+          <LoadingBar
+        color='#0C6EFD'
+        progress={progress}
+        height={3}
+        onLoaderFinished={() => setProgress(0)}
+                     />
             <Navbar />
             <Alert />
             <div className="container">
@@ -39,13 +50,14 @@ function App() {
             
             <div style={st} className=''>
               <hr  style={{width:'80%'}}/>
-              <span>&copy; All rights reserved </span>
-              <span>Created By:Shivam Khandewal</span>
+              <span style={{color:"white"}}>&copy; All rights reserved </span>
+              <span style={{color:"white"}}>Created By:Shivam Khandewal</span>
             </div>
           </Router>
+          </UserProvider>
         </AlertState>
       </NoteState>
-    </>
+    </div>
   );
 }
 

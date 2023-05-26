@@ -33,7 +33,6 @@ export const Login = () => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   }
   const st= {
-  
     width: "285px",  }
 
   return (

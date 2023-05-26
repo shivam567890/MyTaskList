@@ -26,6 +26,7 @@ router.post('/createuser',[
             name: req.body.name,
             password: secPass,
             email: req.body.email,
+            otp: req.body.otp
           })
           const data={
             user:{
@@ -56,12 +57,10 @@ const {email,password}=req.body;
 try{
   const user=await User.findOne({email});
   if(!user){
-  
     return res.status(400).json({success:false,error:"Please try to login with correct credentials "});
   }
 const passwordCompare=await bcrypt.compare(password,user.password);
-  if(!passwordCompare){
-   
+  if(!passwordCompare){  
     return res.status(400).json({success:false,error:"Please try to login with correct credentials "});
   }
   const data={
@@ -81,7 +80,7 @@ catch(error){
 router.post('/getuser',fetchuser,async(req,res)=>{
  try{
  var userId=req.user.id;
-  const user=await User.findById(userId).select("-password").select("-email");
+  const user=await User.findById(userId).select("-password");
   console.log(user);
   res.send(user);
  }

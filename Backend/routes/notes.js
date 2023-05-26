@@ -2,7 +2,6 @@ const  express =require('express');
 var fetchuser=require('../middleware/fetchuser');
 const Note =require('../models/Note');
 const { body, validationResult } = require('express-validator');
-
 // ROUTE 1: Get All the Notes using :  GET "/api/auth/getuser".  lOGIN REQUIRED
 const router= express.Router();
 router.get('/fetchallnotes',fetchuser,async(req,res)=>{
@@ -13,8 +12,7 @@ router.get('/fetchallnotes',fetchuser,async(req,res)=>{
     catch(error){
         console.log(error.message)
         res.status(500).send("Internal server error");
-    }
-  
+    } 
 })
 // ROUTE 2: Add a new NOte using :  POST "/api/auth/addnote".  lOGIN REQUIRED
 router.post('/addnote',fetchuser,[
