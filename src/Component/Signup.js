@@ -1,5 +1,5 @@
-import React, { useState, useContext,useEffect } from 'react'
-import { useNavigate, Link, Form } from 'react-router-dom';
+import React, { useState, useContext } from 'react'
+import { useNavigate, Link} from 'react-router-dom';
 import alertContext from '../context/alerts/AlertContext';
 
 // import Alert from './Alert';
@@ -44,7 +44,7 @@ export const Signup = (props) => {
     // checking if the email id is already exist or not !!
     const handleSubmit=async (e)=>{
     e.preventDefault();
-    const result = await fetch("http://localhost:5000/userpres/fetchid", {
+    const result = await fetch("https://mytasklist-backend.onrender.com/userpres/fetchid", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ export const Signup = (props) => {
       return;
     }
     console.log(num)
-    const response = await fetch("http://localhost:5000/otp/verify", {
+    const response = await fetch("https://mytasklist-backend.onrender.com/otp/verify", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ export const Signup = (props) => {
       return ;
     }
     // const {name,email,password,cpassword}= credentials;
-    const response = await fetch("http://localhost:5000/api/auth/createuser", {
+    const response = await fetch("https://mytasklist-backend.onrender.com/api/auth/createuser", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ export const Signup = (props) => {
     setOpt(num);
   
     
-    const response = await fetch("http://localhost:5000/otp/verify", {
+    const response = await fetch("https://mytasklist-backend.onrender.com/otp/verify", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

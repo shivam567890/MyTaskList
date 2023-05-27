@@ -6,7 +6,7 @@ router.post('/fetchid',[
     body('email','enter a valid email').isEmail()  
 ],async(req,res)=>{
     const errors = validationResult(req);
-    console.log(req.body.email);
+    // console.log(req.body.email);
     if (!errors.isEmpty()) {
       return res.status(400).json({success, errors: errors.array() });
     }

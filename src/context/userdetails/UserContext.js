@@ -5,7 +5,7 @@ export const UserContext = createContext();
 
 // Create a user provider component
 export const UserProvider = ({ children }) => {
-  const host = "http://localhost:5000";
+  const host = "https://mytasklist-backend.onrender.com";
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -30,11 +30,6 @@ export const UserProvider = ({ children }) => {
 
     getDetails();
   }, []);
-
-  // const updateUser = (userData) => {
-  //   setUser(userData);
-    console.log(user);
-  // };
 
   return (
     <UserContext.Provider value={{ user}}>

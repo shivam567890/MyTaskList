@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const mongoURI="mongodb://localhost:27017/inotebook";
+require('dotenv').config();
 mongoose.set('strictQuery', true);
 const connectToMongo=()=>{
-    mongoose.connect(mongoURI,()=>{
+    mongoose.connect(MongoURI.process.env,()=>{
         console.log("connected to Mongo Successsfully");
     })
 }
