@@ -17,7 +17,7 @@ const AddNote = () => {
   }
   return (
     <div>
-      <div className="container my-3">
+      <div className="container my-3 mt-5" style={{ paddingTop: '30px' }}>
         <h1 className='text-white'>Add a Note</h1>
         <form className='my-3'>
           <div className="mb-3">

@@ -2,11 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-
+import NoteState from './context/notes/NoteState';
+import AlertState from './context/alerts/AlertState';
+import { UserProvider } from './context/userdetails/UserContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <NoteState>
+    <AlertState>
+        <UserProvider>
+          <App />
+        </UserProvider>
+    </AlertState>
+      </NoteState>
   </React.StrictMode>
 );
 

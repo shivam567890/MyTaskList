@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
-mongoose.set('strictQuery', true);
+
 const connectToMongo=()=>{
-    mongoose.connect(MongoURI.process.env,()=>{
+    // mongoose.set('strictQuery', true);
+    mongoose.connect(process.env.MongoURI).then(()=>{
         console.log("connected to Mongo Successsfully");
+
+    }).catch((err)=>{
+        console.log("Database not connected due to: ", err);
     })
 }
 module.exports = connectToMongo;

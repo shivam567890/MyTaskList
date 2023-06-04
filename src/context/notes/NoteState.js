@@ -4,6 +4,8 @@ const NoteState = (props) => {
   const host = "https://mytasklist-backend.onrender.com"
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial)
+  const [progress, setProgress] = useState(0)
+
   // eslint-disable-next-line 
   //Get All Notes
   const getNotes = async () => {
@@ -24,6 +26,7 @@ const NoteState = (props) => {
   const addNote = async (title, description, tag, _id) => {
     // TODO: API Call
     //API Call
+    setProgress(10);
     const response = await fetch(`${host}/api/notes/addnote`, {
       method: "POST",
       headers: {
@@ -34,12 +37,14 @@ const NoteState = (props) => {
     });
     const note = await response.json();
     console.log(note)
+    setProgress(100);
     setNotes(notes.concat(note));
   }
   //Delete a note 
   
   const deleteNote = async (id) => {
     // TODO: API Call
+    setProgress(10);
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
       method: 'DELETE',
       headers: {
@@ -47,11 +52,14 @@ const NoteState = (props) => {
         'auth-token': localStorage.getItem('token')
       }
     });
+    setProgress(70);
+
     const json = response.json();
     console.log(json);
     console.log("Deleting the note with id" + id);
     const newNotes = notes.filter((note) => { return note._id !== id });
     setNotes(newNotes);
+    setProgress(100);
   }
 
 
@@ -60,6 +68,8 @@ const NoteState = (props) => {
 
   const editNote = async (id, title, description, tag) => {
     //API Call
+    setProgress(10);
+
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
       method: 'PUT',
       headers: {
@@ -83,11 +93,12 @@ const NoteState = (props) => {
     }
     console.log(newNote);
     setNotes(newNote);
+    setProgress(100);
+
   }
 
-
   return (
-    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes }}>
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes ,setProgress,progress}}>
       {props.children}
     </NoteContext.Provider>
   )

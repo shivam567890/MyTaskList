@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState} from 'react';
 
 // Create the user context
 export const UserContext = createContext();
@@ -8,7 +8,7 @@ export const UserProvider = ({ children }) => {
   const host = "https://mytasklist-backend.onrender.com";
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
+  
     const getDetails = async () => {
       try {
         // API Call
@@ -28,11 +28,9 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-    getDetails();
-  }, []);
 
   return (
-    <UserContext.Provider value={{ user}}>
+    <UserContext.Provider value={{ user,getDetails }}>
       {children}
     </UserContext.Provider>
   );

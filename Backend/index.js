@@ -1,7 +1,6 @@
 const connectToMongo=require('./db');
 const express = require('express')
 var cors =require('cors');
-const sendMail = require('./routes/sendMail');
 require('dotenv').config();
 const app = express()
 connectToMongo();
@@ -14,6 +13,6 @@ app.use('/otp',require('./routes/sendMail'))
 app.use('/',async(req,res)=>{
   res.send("server is running");
 })
-app.listen(5000||PORT.process.env, () => {
-  console.log(`iNotebook backend  listening on port ${port}`)
+app.listen(5000||process.env.PORT, () => {
+  console.log(`iNotebook backend  listening on port ${5000||process.env.PORT}`)
 })

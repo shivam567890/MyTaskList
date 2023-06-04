@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { useNavigate, Link} from 'react-router-dom';
 import alertContext from '../context/alerts/AlertContext';
+import noteContext from '../context/notes/NoteContext';
 
 // import Alert from './Alert';
 
@@ -8,7 +9,7 @@ export const Signup = (props) => {
   const [otp,setOpt]=useState();
     const [seconds, setSeconds] = useState(120); // initial value of 120 seconds (2 minutes)
     const [expired, setExpired] = useState(false); // initial value of timer not expired
-
+    const {setProgress}=useContext(noteContext);
 
     const startTimer = () => {
       setExpired(false);
@@ -44,6 +45,7 @@ export const Signup = (props) => {
     // checking if the email id is already exist or not !!
     const handleSubmit=async (e)=>{
     e.preventDefault();
+    setProgress(10);
     const result = await fetch("https://mytasklist-backend.onrender.com/userpres/fetchid", {
       method: 'POST',
       headers: {
@@ -52,6 +54,7 @@ export const Signup = (props) => {
       body: JSON.stringify({email: credentials.email})
     });
     const js = await result.json();
+    setProgress(100);
     if(js.success){
       showAlert({ type: "danger", msg: "Enter unique email id" });
       return;
@@ -88,9 +91,11 @@ export const Signup = (props) => {
 
   const OtpVerification = async (e) => {
     e.preventDefault();
+    setProgress(10);
     if(otp!=userOtp){
       console.log(otp,"and",userOtp)
       showAlert({ type: "danger", msg: "Incorrect Otp"});
+      setProgress(100);
       return ;
     }
     // const {name,email,password,cpassword}= credentials;
@@ -102,7 +107,7 @@ export const Signup = (props) => {
       body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password})
     });
     const json = await response.json();
-    console.log(json);
+    setProgress(100);
     if (json.success) {     
         showAlert({ type: "success", msg: "Signup Successfull" });
         localStorage.setItem('token', json.authtoken);

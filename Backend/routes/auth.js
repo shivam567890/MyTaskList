@@ -73,7 +73,7 @@ const passwordCompare=await bcrypt.compare(password,user.password);
 }
 catch(error){
   console.log(error.message);
-  res.status(500).send("Internal server error");
+  res.status(500).send("Internal server error",error.message);
 }
 })
 // Routes 3: Get loggedin User Details using: POST "/api/auth/getuser".  Login required
