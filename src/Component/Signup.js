@@ -155,10 +155,10 @@ export const Signup = (props) => {
  
   
   return (
-    <div>
+    <div style={{paddingTop: '30px' }}>
     { checkotp ? (
     <div>
-      <div className='d-flex flex-column justify-content-center align-items-center my-5 py-5 ' style={{ width: '40%', margin: 'auto', boxShadow: 'rgb(182 182 182) 1px 2px 9px', }}>
+      <div className='d-flex flex-column justify-content-center align-items-center my-5 py-5' style={{ width: '350px', margin: 'auto', boxShadow: 'rgb(182 182 182) 1px 2px 9px' }}>
         <h3>MyTaskList</h3>
         <form onSubmit={handleSubmit}>
           <div className="mb-3 mt-5">
@@ -182,12 +182,12 @@ export const Signup = (props) => {
           <button type="submit" className="btn btn-primary mt-4" style={st} >Signup</button>
         </form>
       </div>
-      <div className='d-flex flex-column justify-content-center align-items-center my-2 py-2 ' style={{ width: '40%', margin: 'auto', boxShadow: 'rgb(182 182 182) 1px 2px 9px' }}>
+      <div className='d-flex flex-column justify-content-center align-items-center my-2 py-2 ' style={{ width: '350px', margin: 'auto', boxShadow: 'rgb(182 182 182) 1px 2px 9px' }}>
         <p className='p-2' style={{ margin: "auto" }}>Have an account?  <Link to='/login'>Login</Link></p>
       </div>
     </div>
     ) : (
-             <div className='d-flex flex-column justify-content-center align-items-center my-5 py-5 ' style={{ width: '40%', margin: 'auto', boxShadow: 'rgb(182 182 182) 1px 2px 9px', }}>
+             <div className='d-flex flex-column justify-content-center align-items-center my-5 py-5 ' style={{ width: '350px', margin: 'auto', boxShadow: 'rgb(182 182 182) 1px 2px 9px',paddingTop: '70px'  }}>
         <form onSubmit={OtpVerification}>
            <div className="mb-3 mt-5 d-flex justify-content-center align-items-center flex-column">
           <h3> Enter Otp here</h3>

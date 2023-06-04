@@ -40,7 +40,7 @@ export const Login = () => {
     width: "285px",  }
 
   return (
-    <div className='d-flex flex-column justify-content-center align-items-center w-full'>
+    <div className='d-flex flex-column justify-content-center align-items-center w-full' style={{ paddingTop: '70px' }}>
       <div className='d-flex flex-column justify-content-center border  align-items-center my-5 py-5 'style={{width:"350px",boxShadow: 'rgb(182 182 182) 1px 2px 9px'}} >
       <h3>MyTaskList</h3>
       <form onSubmit={handleSubmit}>
